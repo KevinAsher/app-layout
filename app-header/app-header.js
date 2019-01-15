@@ -281,14 +281,24 @@ Polymer({
         @apply --layout-fit;
         height: 100%;
         pointer-events: none;
-        background-size: cover;
       }
 
-      #backgroundFrontLayer {
+      #backgroundFrontLayer::before,
+      #backgroundRearLayer::before {
+        @apply --layout-fit;
+        height: 100%;
+        pointer-events: none;
+        background-size: cover;
+        content: '';
+        will-change: opacity;
+        width: 100%;
+      }
+
+      #backgroundFrontLayer::before {
         @apply --app-header-background-front-layer;
       }
 
-      #backgroundRearLayer {
+      #backgroundRearLayer::before {
         opacity: 0;
         @apply --app-header-background-rear-layer;
       }
