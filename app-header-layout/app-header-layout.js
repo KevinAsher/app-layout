@@ -179,9 +179,10 @@ Polymer({
     // the content until the height of the header can be read.
     this.$.wrapper.classList.remove('initializing');
     // Update scroll target.
-    header.scrollTarget = this.hasScrollingRegion ?
-        this.$.contentContainer :
-        this.ownerDocument.documentElement;
+    header.scrollTarget =
+      header.scrollTarget !== header._defaultScrollTarget ? header.scrollTarget
+        : this.hasScrollingRegion ? this.$.contentContainer
+          : this.ownerDocument.documentElement;
     // Get header height here so that style reads are batched together before
     // style writes (i.e. getBoundingClientRect() below).
     var headerHeight = header.offsetHeight;
